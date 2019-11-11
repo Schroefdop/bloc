@@ -6,6 +6,7 @@ export function getBlocTemplate(blocName: string): string {
   const blocEvent = `${pascalCaseBlocName}Event`;
   return `import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:rxdart/rxdart.dart';
 import './bloc.dart';
 
 class ${pascalCaseBlocName}Bloc extends Bloc<${blocEvent}, ${blocState}> {
@@ -15,12 +16,14 @@ class ${pascalCaseBlocName}Bloc extends Bloc<${blocEvent}, ${blocState}> {
   @override
   Stream<${blocState}> mapEventToState(
     ${blocEvent} event,
-  ) async* {
+  ) {
     // TODO: Add Logic
     return event.join((exampleEvent) {
-      return ${blocState}.initial();
+      return null;
+      // return Observable state 
     }, (exampleEvent2) {
-      // return a different state
+      return null;
+      // return a different observable state
     });
   }
 }
