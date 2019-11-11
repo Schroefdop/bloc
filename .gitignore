@@ -17,3 +17,6 @@ coverage/
 *.log
 !packages/**/example/ios/
 !packages/**/example/android/
+
+node_modules
+out/

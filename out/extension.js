@@ -55,14 +55,18 @@ function promptForBlocName() {
     };
     return vscode_1.window.showInputBox(blocNamePromptOptions);
 }
-function promptForUseEquatable() {
-    const useEquatablePromptValues = ["no (default)", "yes (advanced)"];
-    const useEquatablePromptOptions = {
-        placeHolder: "Do you want to use the Equatable Package in this bloc to override equality comparisons?",
-        canPickMany: false
-    };
-    return vscode_1.window.showQuickPick(useEquatablePromptValues, useEquatablePromptOptions);
-}
+// function promptForUseEquatable(): Thenable<string | undefined> {
+//   const useEquatablePromptValues: string[] = ["no (default)", "yes (advanced)"];
+//   const useEquatablePromptOptions: QuickPickOptions = {
+//     placeHolder:
+//       "Do you want to use the Equatable Package in this bloc to override equality comparisons?",
+//     canPickMany: false
+//   };
+//   return window.showQuickPick(
+//     useEquatablePromptValues,
+//     useEquatablePromptOptions
+//   );
+// }
 function promptForTargetDirectory() {
     return __awaiter(this, void 0, void 0, function* () {
         const options = {

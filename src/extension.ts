@@ -7,7 +7,7 @@ import {
   ExtensionContext,
   InputBoxOptions,
   OpenDialogOptions,
-  QuickPickOptions,
+  // QuickPickOptions,
   Uri,
   window
 } from "vscode";
@@ -66,18 +66,18 @@ function promptForBlocName(): Thenable<string | undefined> {
   return window.showInputBox(blocNamePromptOptions);
 }
 
-function promptForUseEquatable(): Thenable<string | undefined> {
-  const useEquatablePromptValues: string[] = ["no (default)", "yes (advanced)"];
-  const useEquatablePromptOptions: QuickPickOptions = {
-    placeHolder:
-      "Do you want to use the Equatable Package in this bloc to override equality comparisons?",
-    canPickMany: false
-  };
-  return window.showQuickPick(
-    useEquatablePromptValues,
-    useEquatablePromptOptions
-  );
-}
+// function promptForUseEquatable(): Thenable<string | undefined> {
+//   const useEquatablePromptValues: string[] = ["no (default)", "yes (advanced)"];
+//   const useEquatablePromptOptions: QuickPickOptions = {
+//     placeHolder:
+//       "Do you want to use the Equatable Package in this bloc to override equality comparisons?",
+//     canPickMany: false
+//   };
+//   return window.showQuickPick(
+//     useEquatablePromptValues,
+//     useEquatablePromptOptions
+//   );
+// }
 
 async function promptForTargetDirectory(): Promise<string | undefined> {
   const options: OpenDialogOptions = {
