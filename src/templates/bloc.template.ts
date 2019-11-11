@@ -6,7 +6,6 @@ export function getBlocTemplate(blocName: string): string {
   const blocEvent = `${pascalCaseBlocName}Event`;
   return `import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:rxdart/rxdart.dart';
 import './bloc.dart';
 
 class ${pascalCaseBlocName}Bloc extends Bloc<${blocEvent}, ${blocState}> {
