@@ -84,7 +84,8 @@ function promptForTargetDirectory() {
 }
 function generateBlocCode(blocName, targetDirectory, useEquatable) {
     return __awaiter(this, void 0, void 0, function* () {
-        const blocDirectoryPath = `${targetDirectory}/bloc`;
+        const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
+        const blocDirectoryPath = `${targetDirectory}/${snakeCaseBlocName}_bloc`;
         if (!fs_1.existsSync(blocDirectoryPath)) {
             yield createDirectory(blocDirectoryPath);
         }
@@ -108,7 +109,7 @@ function createDirectory(targetDirectory) {
 }
 function createBlocEventTemplate(blocName, targetDirectory, useEquatable) {
     const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
-    const targetPath = `${targetDirectory}/bloc/${snakeCaseBlocName}_event.dart`;
+    const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/${snakeCaseBlocName}_event.dart`;
     if (fs_1.existsSync(targetPath)) {
         throw Error(`${snakeCaseBlocName}_event.dart already exists`);
     }
@@ -124,7 +125,7 @@ function createBlocEventTemplate(blocName, targetDirectory, useEquatable) {
 }
 function createBlocStateTemplate(blocName, targetDirectory, useEquatable) {
     const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
-    const targetPath = `${targetDirectory}/bloc/${snakeCaseBlocName}_state.dart`;
+    const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/${snakeCaseBlocName}_state.dart`;
     if (fs_1.existsSync(targetPath)) {
         throw Error(`${snakeCaseBlocName}_state.dart already exists`);
     }
@@ -140,7 +141,7 @@ function createBlocStateTemplate(blocName, targetDirectory, useEquatable) {
 }
 function createBlocTemplate(blocName, targetDirectory) {
     const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
-    const targetPath = `${targetDirectory}/bloc/${snakeCaseBlocName}_bloc.dart`;
+    const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/${snakeCaseBlocName}_bloc.dart`;
     if (fs_1.existsSync(targetPath)) {
         throw Error(`${snakeCaseBlocName}_bloc.dart already exists`);
     }
@@ -155,7 +156,8 @@ function createBlocTemplate(blocName, targetDirectory) {
     }));
 }
 function createBarrelTemplate(blocName, targetDirectory) {
-    const targetPath = `${targetDirectory}/bloc/bloc.dart`;
+    const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
+    const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/bloc.dart`;
     if (fs_1.existsSync(targetPath)) {
         return new Promise((resolve, reject) => {
             fs_1.appendFile(targetPath, templates_1.getBarrelTemplate(blocName), "utf8", error => {

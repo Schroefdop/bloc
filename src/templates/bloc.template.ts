@@ -16,7 +16,6 @@ class ${pascalCaseBlocName}Bloc extends Bloc<${blocEvent}, ${blocState}> {
   Stream<${blocState}> mapEventToState(
     ${blocEvent} event,
   ) {
-    // TODO: Add Logic
     return event.join((exampleEvent) {
       return null;
       // return Observable state 

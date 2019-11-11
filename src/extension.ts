@@ -99,7 +99,8 @@ async function generateBlocCode(
   targetDirectory: string,
   useEquatable: boolean
 ) {
-  const blocDirectoryPath = `${targetDirectory}/bloc`;
+  const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
+  const blocDirectoryPath = `${targetDirectory}/${snakeCaseBlocName}_bloc`;
   if (!existsSync(blocDirectoryPath)) {
     await createDirectory(blocDirectoryPath);
   }
@@ -129,7 +130,7 @@ function createBlocEventTemplate(
   useEquatable: boolean
 ) {
   const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
-  const targetPath = `${targetDirectory}/bloc/${snakeCaseBlocName}_event.dart`;
+  const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/${snakeCaseBlocName}_event.dart`;
   if (existsSync(targetPath)) {
     throw Error(`${snakeCaseBlocName}_event.dart already exists`);
   }
@@ -155,7 +156,7 @@ function createBlocStateTemplate(
   useEquatable: boolean
 ) {
   const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
-  const targetPath = `${targetDirectory}/bloc/${snakeCaseBlocName}_state.dart`;
+  const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/${snakeCaseBlocName}_state.dart`;
   if (existsSync(targetPath)) {
     throw Error(`${snakeCaseBlocName}_state.dart already exists`);
   }
@@ -177,7 +178,7 @@ function createBlocStateTemplate(
 
 function createBlocTemplate(blocName: string, targetDirectory: string) {
   const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
-  const targetPath = `${targetDirectory}/bloc/${snakeCaseBlocName}_bloc.dart`;
+  const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/${snakeCaseBlocName}_bloc.dart`;
   if (existsSync(targetPath)) {
     throw Error(`${snakeCaseBlocName}_bloc.dart already exists`);
   }
@@ -193,7 +194,8 @@ function createBlocTemplate(blocName: string, targetDirectory: string) {
 }
 
 function createBarrelTemplate(blocName: string, targetDirectory: string) {
-  const targetPath = `${targetDirectory}/bloc/bloc.dart`;
+  const snakeCaseBlocName = changeCase.snakeCase(blocName.toLowerCase());
+  const targetPath = `${targetDirectory}/${snakeCaseBlocName}_bloc/bloc.dart`;
   if (existsSync(targetPath)) {
     return new Promise((resolve, reject) => {
       appendFile(targetPath, getBarrelTemplate(blocName), "utf8", error => {
