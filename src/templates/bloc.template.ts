@@ -2,13 +2,16 @@ import * as changeCase from "change-case";
 
 export function getBlocTemplate(blocName: string): string {
   const pascalCaseBlocName = changeCase.pascalCase(blocName.toLowerCase());
+  const blocType = `${pascalCaseBlocName}BlocType`;
   const blocState = `${pascalCaseBlocName}State`;
   const blocEvent = `${pascalCaseBlocName}Event`;
   return `import 'dart:async';
 import 'package:bloc/bloc.dart';
 import './bloc.dart';
 
-class ${pascalCaseBlocName}Bloc extends Bloc<${blocEvent}, ${blocState}> {
+abstract class ${blocType} extends Bloc<${blocEvent}, ${blocState}> {}
+
+class ${pascalCaseBlocName}Bloc extends ${blocType} {
   @override
   ${blocState} get initialState => ${blocState}.initial();
 
